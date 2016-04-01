@@ -1,30 +1,27 @@
 package com.company;
 
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
-public class MagicExchangeableWords {
+public class P7_MagicExchangeableWords {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        String firstString = scanner.next();
-        String secondString = scanner.next();
-        System.out.println(isExchangeable(firstString, secondString));
-    }
+        Scanner console = new Scanner(System.in);
+        String firstWord = console.next();
+        String secondWord = console.next();
 
-    private static boolean isExchangeable(String firstString, String secondString) {
-        HashMap<Character, Character> exchangeable = new HashMap<>();
+        Map<Character, Character> exchangeableMap = new HashMap<Character, Character>();
+        boolean isExchangeable = true;
+        for (int i = 0; i < firstWord.length(); i++) {
 
-        for (int i = 0; i < firstString.length(); i++) {
-            if (exchangeable.containsKey(firstString.charAt(i))) {
-                if (secondString.charAt(i) != exchangeable.get(firstString.charAt(i))) {
-                    return false;
-                }
-            } else if (exchangeable.containsValue(secondString.charAt(i))) {
-                return false;
+            if (!exchangeableMap.containsKey(firstWord.charAt(i))) {
+                exchangeableMap.put(firstWord.charAt(i), secondWord.charAt(i));
             } else {
-                exchangeable.put(firstString.charAt(i), secondString.charAt(i));
+                if (!exchangeableMap.get(firstWord.charAt(i)).equals(secondWord.charAt(i))) {
+                    isExchangeable = false;
+                }
             }
         }
-        return true;
+        System.out.println(isExchangeable);
     }
 }
