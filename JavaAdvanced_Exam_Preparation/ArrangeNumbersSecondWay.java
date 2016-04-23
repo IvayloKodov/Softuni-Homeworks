@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class practice {
+public class ArrangeNumbersSecondWay {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String []numbers = sc.nextLine().split(",\\s*");
